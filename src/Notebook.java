@@ -1,28 +1,30 @@
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Notebook {
-    private ArrayList<ArrayList<ArrayList<DailySection>>> dailySections;
+    private HashMap<Date, DailySection> dailySections;
     private Queue<ToDo> currentToDos;
     private Queue<ToDo> completedToDos;
-    // private BinarySearchTree<ExerciseStat> exerciseStats;
-    private ArrayList<DietPlan> dietPlans;
-    private ArrayList<ExercisePlan> exercisePlans;
+
+    private BST<ExerciseStat> exerciseStats;
+    private CircularArrayList<DietPlan> dietPlans;
+    private CircularArrayList<ExercisePlan> exercisePlans;
 
     public Notebook() {
-        dailySections = new ArrayList<>(new ArrayList<>(new ArrayList<>()));
+        dailySections = new HashMap<>();
         currentToDos = new LinkedList<>();
         completedToDos = new LinkedList<>();
-        dietPlans = new ArrayList<>();
-        exercisePlans = new ArrayList<>();
+        dietPlans = new CircularArrayList<>();
+        exercisePlans = new CircularArrayList<>();
     }
 
-    public ArrayList<ArrayList<ArrayList<DailySection>>> getDailySections() {
+    public HashMap<Date, DailySection> getDailySections() {
         return dailySections;
     }
 
-    public void setDailySections(ArrayList<ArrayList<ArrayList<DailySection>>> dailySections) {
+    public void setDailySections(HashMap<Date, DailySection> dailySections) {
         this.dailySections = dailySections;
     }
 
@@ -42,19 +44,19 @@ public class Notebook {
         this.completedToDos = completedToDos;
     }
 
-    public ArrayList<DietPlan> getDietPlans() {
+    public CircularArrayList<DietPlan> getDietPlans() {
         return dietPlans;
     }
 
-    public void setDietPlans(ArrayList<DietPlan> dietPlans) {
+    public void setDietPlans(CircularArrayList<DietPlan> dietPlans) {
         this.dietPlans = dietPlans;
     }
 
-    public ArrayList<ExercisePlan> getExercisePlans() {
+    public CircularArrayList<ExercisePlan> getExercisePlans() {
         return exercisePlans;
     }
 
-    public void setExercisePlans(ArrayList<ExercisePlan> exercisePlans) {
+    public void setExercisePlans(CircularArrayList<ExercisePlan> exercisePlans) {
         this.exercisePlans = exercisePlans;
     }
 }
