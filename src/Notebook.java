@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Notebook {
-    private HashMap<Date, DailySection> dailySections;
-    private Queue<ToDo> currentToDos;
-    private Queue<ToDo> completedToDos;
+    private final HashMap<Date, DailySection> dailySections;
+    private final Queue<ToDo> currentToDos;
+    private final Queue<ToDo> completedToDos;
 
     private BST<ExerciseStat> exerciseStats;
     private CircularArrayList<DietPlan> dietPlans;
@@ -24,24 +24,26 @@ public class Notebook {
         return dailySections;
     }
 
-    public void setDailySections(HashMap<Date, DailySection> dailySections) {
-        this.dailySections = dailySections;
+    public boolean addDailySection(Date date) {
+        if (dailySections.containsKey(date)) return false;
+        dailySections.put(date, new DailySection(date, new FoodMenu(null), null));
+        return true;
     }
 
     public Queue<ToDo> getCurrentToDos() {
         return currentToDos;
     }
 
-    public void setCurrentToDos(Queue<ToDo> currentToDos) {
-        this.currentToDos = currentToDos;
+    public void addCurrentToDo(ToDo toDo) {
+        this.currentToDos.offer(toDo);
     }
 
     public Queue<ToDo> getCompletedToDos() {
         return completedToDos;
     }
 
-    public void setCompletedToDos(Queue<ToDo> completedToDos) {
-        this.completedToDos = completedToDos;
+    public void addCompletedToDo(ToDo completedToDo) {
+        this.completedToDos.offer(completedToDo);
     }
 
     public CircularArrayList<DietPlan> getDietPlans() {

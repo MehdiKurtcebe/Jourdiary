@@ -12,14 +12,14 @@ public class User {
 
     private Notebook notebook;
 
-    public User(){
-        this("unknown_NAME","unknown_SURNAME");
+    public User(String id){
+        this(id, "unknown_NAME","unknown_SURNAME");
     }
 
-    public User(String name, String surname){
+    public User(String id, String name, String surname){
         this.name = name;
         this.surname = surname;
-        this.id = "unknown_ID";
+        this.id = id;
         this.hobbies = new ArrayList<>();
         this.notebook = new Notebook();
     }
