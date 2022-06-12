@@ -6,6 +6,18 @@ public class SystemManager {
 
 	private static User loggedUser;
 
+	public static HashMap<String, User> getUsers() {
+		return users;
+	}
+
+	public static User getLoggedUser() {
+		return loggedUser;
+	}
+
+	public static void setLoggedUser(User loggedUser) {
+		SystemManager.loggedUser = loggedUser;
+	}
+
 	public static boolean login(String id) {
 		loggedUser = users.get(id);
 		return loggedUser != null;
