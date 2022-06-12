@@ -1,7 +1,7 @@
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 
-public class System {
+public class SystemManager {
 	private static HashMap<String, User> users;
 
 	private static User loggedUser;
@@ -19,17 +19,23 @@ public class System {
 		return true;
 	}
 
-	public static void displayDailySections(Date date) {}
+	public static void displayDailySections(Calendar date) {
+	}
 
-	public static void addDailySection() {}
+	public static void addDailySection() {
+	}
 
-	public static void editDailySection() {}
+	public static void editDailySection() {
+	}
 
-	public static void displayCurrentToDos() {}
+	public static void displayCurrentToDos() {
+	}
 
-	public static void displayCompletedToDos() {}
+	public static void displayCompletedToDos() {
+	}
 
-	public static void displayToDo(ToDo toDo) {}
+	public static void displayToDo(ToDo toDo) {
+	}
 
 	public static ToDo createToDoList() {return new ToDo();}
 
