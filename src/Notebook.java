@@ -78,7 +78,7 @@ public class Notebook {
         return null;
     }
 
-    public AVLTree<String> getRecipes(){
+    public AVLTree<Recipe> getRecipes(){
         return recipes;
     }
 }
