@@ -35,7 +35,7 @@ public class SystemManager {
 	
 	
 	//--------------------DAILY SECTION----------------------------
-	public static void displayDailySections(Calendar date) {
+	public static void displayDailySections(Date date) {
 	}
 
 	public static void addDailySection() {
@@ -105,30 +105,6 @@ public class SystemManager {
 	
 	public static void addToDoList(ToDo list) {}
 
-	public static void editToDoList() {
-		String nameOfList = GetChoiceFromUser.getStringFromUser("Enter name of list :");
-		ToDo list = loggedUser.getNotebook().getToDoList(nameOfList);
-
-		int choice = GetChoiceFromUser.getSubChoice(2, "\n1 - Change deadline \n2-Add new task");
-		if(choice == 1){
-			int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
-			int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
-			int year = GetChoiceFromUser.getNumber("Please enter year : ");
-			list.setDeadline(new Date(day,month,year));
-		}
-		else if(choice == 2){
-			String content = GetChoiceFromUser.getStringFromUser("Enter new task : ");
-			list.addTask(new Task(content));
-		}
-	}
-
-	public static void markToDoAsCompleted(){
-		String nameOfList = GetChoiceFromUser.getStringFromUser("Enter name of list :");
-		ToDo list = loggedUser.getNotebook().getToDoList(nameOfList);
-		loggedUser.getNotebook().getCurrentToDos().remove(list);
-		loggedUser.getNotebook().getCompletedToDos().add(list);
-	}
-	
 	//-----------------------TASKS---------------------------
 	public static void displayTasksOfTheDays() {}
 	
