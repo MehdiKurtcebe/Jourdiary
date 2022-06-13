@@ -8,7 +8,7 @@ public class Notebook {
 
         // private Skiplist exerciseStats;
         
-        private NavigableMap<String,Integer> dietPlans;
+        private NavigableSet<Food> dietPlans;
         private GraphADT<String> exercisePlans;
         private AVLTree<String> recipes;
 
@@ -16,8 +16,11 @@ public class Notebook {
         dailySections = new HashMap<>();
         currentToDos = new HashSet<>();
         completedToDos = new HashSet<>();
-        dietPlans = new TreeMap<>();
-        // exercisePlans = new Graph;
+        dietPlans = new TreeSet<>();
+        
+        //these part could be changed
+        String[] arr = new String[10]; 
+        exercisePlans = new AdjacencyListMatrix<>(3, true, arr);
     }
 
     public HashMap<Date, DailySection> getDailySections() {
@@ -46,19 +49,19 @@ public class Notebook {
         this.completedToDos.add(completedToDo);
     }
 
-    public NavigableMap<String,Integer> getDietPlans() {
+    public NavigableSet<Food> getDietPlans() {
         return dietPlans;
     }
 
-    public void setDietPlans(NavigableMap<String,Integer> dietPlans) {
+    public void setDietPlans(NavigableSet<Food> dietPlans) {
         this.dietPlans = dietPlans;
     }
 
-    public Graph<> getExercisePlans() {
+    public GraphADT<String> getExercisePlans() {
         return exercisePlans;
     }
 
-    public void setExercisePlans(Graph<> exercisePlans) {
+    public void setExercisePlans(GraphADT<String> exercisePlans) {
         this.exercisePlans = exercisePlans;
     }
 
