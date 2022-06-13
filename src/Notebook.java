@@ -29,7 +29,7 @@ public class Notebook {
 
     public boolean addDailySection(Date date) {
         if (dailySections.containsKey(date)) return false;
-        dailySections.put(date, new DailySection(date, new FoodMenu(null), null));
+        dailySections.put(date, new DailySection(date, "unknown", null));
         return true;
     }
     
