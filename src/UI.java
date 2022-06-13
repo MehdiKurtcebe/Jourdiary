@@ -1,5 +1,5 @@
 public class UI {
-	private static void start_screen() {
+	public static void start_screen() {
 		while (true) {
 			start_screen_menu();
 			int input = GetChoiceFromUser.getSubChoice(2, "YOUR CHOICE: ");
@@ -59,9 +59,6 @@ public class UI {
 					exercise_plan();
 					break;
 				case 7:
-					//food_menu();
-					break;
-				case 8:
 					hobbies();
 					break;
 			}
@@ -234,7 +231,8 @@ public class UI {
 	}
 
 	private static void start_screen_menu(){
-		System.out.println("        *************            ********            **        **        *****            ******            ******          ********          *****            **              ** ");
+		
+		System.out.println("\n\n        *************            ********            **        **        *****            ******            ******          ********          *****            **              ** ");
 		System.out.println("               **              **        **          **        **        **   **          **    **            **           **      **         **   **            **          **   ");
 		System.out.println("               **             **          **         **        **        **     **        **     **           **          **        **        **     **            **      **     ");
 		System.out.println("               **            **            **        **        **        **   **          **      **          **          **        **        **   **                **  **       ");
@@ -267,8 +265,7 @@ public class UI {
 		System.out.println("4 - Task of the Day");
 		System.out.println("5 - Diet Plan");
 		System.out.println("6 - Exercise Plan");
-		System.out.println("7 - Food Menu");
-		System.out.println("8 - Hobbies ");
+		System.out.println("7 - Hobbies ");
 		System.out.printf("==========================");
 	}
 
