@@ -1,16 +1,16 @@
 import java.util.*;
 
 public class Notebook {
+        private Date date;
+        private final HashMap<Date, DailySection> dailySections;
+        private final HashSet<ToDo> currentToDos;
+        private final HashSet<ToDo> completedToDos;
 
-    private Date date;
-    private final HashMap<Date, DailySection> dailySections;
-    private final HashSet<ToDo> currentToDos;
-    private final HashSet<ToDo> completedToDos;
-    // private Skiplist exerciseStats;
-    //private BST<ExerciseStat> exerciseStats;
-    private NavigableMap<String,Integer> dietPlans;
-    // private Graph exercisePlans;
-    private CircularArrayList<ExercisePlan> exercisePlans;
+        // private Skiplist exerciseStats;
+        
+        private NavigableMap<String,Integer> dietPlans;
+        private GraphADT<String> exercisePlans;
+        private AVLTree<String> recipes;
 
     public Notebook() {
         dailySections = new HashMap<>();
@@ -29,7 +29,42 @@ public class Notebook {
         dailySections.put(date, new DailySection(date, new FoodMenu(null), null));
         return true;
     }
+    
+    public HashSet<ToDo> getCurrentToDos() {
+        return currentToDos;
+    }
 
+    public void addCurrentToDo(ToDo toDo) {
+        this.currentToDos.add(toDo);
+    }
+
+    public HashSet<ToDo> getCompletedToDos() {
+        return completedToDos;
+    }
+
+    public void addCompletedToDo(ToDo completedToDo) {
+        this.completedToDos.add(completedToDo);
+    }
+
+    public NavigableMap<String,Integer> getDietPlans() {
+        return dietPlans;
+    }
+
+    public void setDietPlans(NavigableMap<String,Integer> dietPlans) {
+        this.dietPlans = dietPlans;
+    }
+
+    public Graph<> getExercisePlans() {
+        return exercisePlans;
+    }
+
+    public void setExercisePlans(Graph<> exercisePlans) {
+        this.exercisePlans = exercisePlans;
+    }
+
+    
+    //-----------------------------------------------------------------------------
+    
     public ToDo getToDoList(String name){
         Iterator<ToDo> it = currentToDos.iterator();
         while(it.hasNext()){
@@ -40,35 +75,7 @@ public class Notebook {
         return null;
     }
 
-    public Queue<ToDo> getCurrentToDos() {
-        return currentToDos;
-    }
-
-    public void addCurrentToDo(ToDo toDo) {
-        this.currentToDos.offer(toDo);
-    }
-
-    public Queue<ToDo> getCompletedToDos() {
-        return completedToDos;
-    }
-
-    public void addCompletedToDo(ToDo completedToDo) {
-        this.completedToDos.offer(completedToDo);
-    }
-
-    public CircularArrayList<DietPlan> getDietPlans() {
-        return dietPlans;
-    }
-
-    public void setDietPlans(CircularArrayList<DietPlan> dietPlans) {
-        this.dietPlans = dietPlans;
-    }
-
-    public CircularArrayList<ExercisePlan> getExercisePlans() {
-        return exercisePlans;
-    }
-
-    public void setExercisePlans(CircularArrayList<ExercisePlan> exercisePlans) {
-        this.exercisePlans = exercisePlans;
+    public AVLTree<String> getRecipes(){
+        return recipes;
     }
 }
