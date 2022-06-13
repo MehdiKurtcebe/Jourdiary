@@ -211,15 +211,19 @@ public class SystemManager {
 
 	
 	//--------------------EXERCISE PLANS----------------------
-	public static void displayExercisePlans() {}
+	public static void displayExercisePlan(ExercisePlan plan) {
+		plan.getDailyExercises().toString();
+	}
 
-	public static void displayExercisePlan(ExercisePlan plan) {}
+	public static void displayExerciseOfTheDay(ExercisePlan plan) {
+		plan.getDaily();
+	}
 
-	public static void displayExerciseOfTheDay() {}
+	public static void addExercisePlan(String name, int cal, ExercisePlan plan) {
+		Exercise e = new Exercise(name, cal);
+		plan.getDailyExercises().insertVertex(e);
+	}
 
-	public static void addExercisePlan() {}
-
-	
 	//-------------------DIET PLANS----------------------------
 	public static void displayDietPlans() {
 		Iterator<Food> it = loggedUser.getNotebook().getDietPlans().getIterator();
