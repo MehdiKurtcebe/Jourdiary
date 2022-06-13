@@ -257,7 +257,8 @@ public class UI {
 	}
 
 	private static void user_profile_menu(){
-		System.out.println("\n\n===========================");
+		System.out.printf("\n\n>>Profile : %s",SystemManager.getLoggedUser().getId());
+		System.out.println("\n===========================");
 		System.out.println("0 - Back");
 		System.out.println("1 - View All Jourdiary");
 		System.out.println("2 - Daily Section");
