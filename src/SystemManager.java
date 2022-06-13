@@ -35,6 +35,10 @@ public class SystemManager {
 	
 	
 	//--------------------DAILY SECTION----------------------------
+	
+	public static void displayAllDailySections() {
+	}
+
 	public static void displayDailySections(Date date) {
 	}
 
@@ -107,10 +111,14 @@ public class SystemManager {
 
 	//-----------------------TASKS---------------------------
 	public static void displayTasksOfTheDays() {}
+
+	public static void markTaskAsCompleted() {}
 	
 	public static void markTaskAsCompleted(Task task) {}
 
-	public static void markTaskAsNotCompleted(Task task) {}
+	public static void addTask(){}
+
+	public static void editTask(){}
 
 	
 	//--------------------EXERCISE PLANS----------------------
@@ -131,6 +139,7 @@ public class SystemManager {
 	public static void createDietPlan() {}
 
 	public static void editDietPlan() {}
+
 	
 	//------------------HOBBIES---------------------------------
 	public static void displayHobbies() {
