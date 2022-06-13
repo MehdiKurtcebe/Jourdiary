@@ -18,13 +18,13 @@ public class GetChoiceFromUser {
         System.out.print(message);
         try {
             choice = input.nextInt();
-            while (choice < 1 || choice > upperBound) {
-                System.out.printf("Please enter a number between 1 and %d: ", upperBound);
+            while (choice < 0 || choice > upperBound) {
+                System.out.printf("Please enter a number between 0 and %d: ", upperBound);
                 choice = input.nextInt();
             }
         } catch (Exception e) {
             choice = 1;
-            System.out.printf("Please enter a number between 1 and %d!\n", upperBound);
+            System.out.printf("Please enter a number between 0 and %d!\n", upperBound);
             input.nextLine();
         }
         return choice;
