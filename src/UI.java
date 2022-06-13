@@ -127,11 +127,12 @@ public class UI {
 	private static void diet_plan(){
 		diet_plan_menu();
 		while(true){
-			int input = GetChoiceFromUser.getSubChoice(3, "");
+			int input = GetChoiceFromUser.getSubChoice(4, "");
 			switch (input) {
 				case 1 -> SystemManager.displayDietPlans();
-				case 2 -> SystemManager.createDietPlan();
-				case 3 -> SystemManager.editDietPlan();
+				case 2 -> SystemManager.addFoodToDietPlan();
+				case 3 -> SystemManager.removeFoodFromDietPlan();
+				case 4 -> SystemManager.filterFoodsByCalories();
 			}
 		}
 	}
