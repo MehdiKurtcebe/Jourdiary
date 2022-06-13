@@ -16,7 +16,7 @@ public class Notebook {
         
         private NavigableMap<String,Integer> dietPlans;
         private GraphADT<String> exercisePlans;
-        private AVLTree<Recipes<String>> recipes;
+        private AVLTree<String> recipes;
 
     public Notebook() {
         dailySections = new HashMap<>();
@@ -81,7 +81,7 @@ public class Notebook {
         return null;
     }
 
-    public AVLTree<Recipes<String>> getRecipes(){
+    public AVLTree<String> getRecipes(){
         return recipes;
     }
 }
