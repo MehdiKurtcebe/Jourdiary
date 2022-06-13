@@ -130,7 +130,8 @@ public class SystemManager {
 		loggedUser.getNotebook().getCurrentToDos().remove(list);
 		loggedUser.getNotebook().getCompletedToDos().add(list);
 	}
-
+	
+	//-----------------------TASKS---------------------------
 	public static void displayTasksOfTheDays() {}
 	
 	public static void markTaskAsCompleted(Task task) {}
@@ -167,6 +168,8 @@ public class SystemManager {
 
 	public static void editFoodMenu() {}
 
+	
+	//------------------HOBBIES---------------------------------
 	public static void displayHobbies() {
 		for(int i=0;i<loggedUser.getHobbies().size();i++)
 			System.out.printf("\n%d -) %s ",i,loggedUser.getHobbies().get(i));
