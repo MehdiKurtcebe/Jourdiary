@@ -211,7 +211,16 @@ public class SystemManager {
 
 	
 	//--------------------EXERCISE PLANS----------------------
-	public static void displayExercisePlan(ExercisePlan plan) {
+	public static void displayExercisePlans() {
+	}
+
+	public static void displayExerciseOfTheDay() {
+	}
+
+	public static void addExercisePlan() {
+	}
+	
+	public static void displayExercisePlans(ExercisePlan plan) {
 		plan.getDailyExercises().toString();
 	}
 
