@@ -15,7 +15,8 @@ public class Notebook {
         // private Skiplist exerciseStats;
         
         private NavigableMap<String,Integer> dietPlans;
-        // private Graph exercisePlans;
+        private GraphADT<String> exercisePlans;
+        private AVLTree<Recipes<String>> recipes;
 
     public Notebook() {
         dailySections = new HashMap<>();
@@ -80,5 +81,7 @@ public class Notebook {
         return null;
     }
 
-
+    public AVLTree<Recipes<String>> getRecipes(){
+        return recipes;
+    }
 }
