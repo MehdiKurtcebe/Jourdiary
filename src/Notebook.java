@@ -10,7 +10,7 @@ public class Notebook {
         
         private NavigableSet<Food> dietPlans;
         private GraphADT<String> exercisePlans;
-        private AVLTree<String> recipes;
+        private AVLTree<Recipe> recipes;
 
     public Notebook() {
         dailySections = new HashMap<>();
