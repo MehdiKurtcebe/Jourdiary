@@ -214,6 +214,7 @@ public class UI {
 		System.out.println("1 - Display All Diet Plans");
 		System.out.println("2 - Create Diet Plan");
 		System.out.println("3 - Edit Diet Plan");
+		System.out.println("4 - Filter Foods in Diet Plan by Calorie");
 	}
 
 	private static void exercise_plan_menu(){
