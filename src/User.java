@@ -20,8 +20,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.id = id;
-        this.activeHobbies = new ArrayList<>();
-        this.passiveHobbies = new ArrayList<>();
+        this.Hobbies = new ArrayList<>();
         this.notebook = new Notebook();
     }
 
