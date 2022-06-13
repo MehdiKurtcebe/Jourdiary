@@ -1,16 +1,15 @@
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DailySection {
 	private final Date date;
 
 	private ArrayList<String> dailyEntries;
 
-	private final FoodMenu menuOfTheDay;
+	private final String menuOfTheDay;
 
 	private final String exerciseOfTheDay;
 
-	public DailySection(Date date, FoodMenu menuOfTheDay, String exerciseOfTheDay) {
+	public DailySection(Date date, String menuOfTheDay, String exerciseOfTheDay) {
 		this.date = date;
 		this.menuOfTheDay = menuOfTheDay;
 		this.exerciseOfTheDay = exerciseOfTheDay;
@@ -21,7 +20,7 @@ public class DailySection {
 		return date;
 	}
 
-	public FoodMenu getMenuOfTheDay() {
+	public String getMenuOfTheDay() {
 		return menuOfTheDay;
 	}
 
