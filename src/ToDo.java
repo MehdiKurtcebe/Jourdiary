@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.util.PriorityQueue;
 
 public class ToDo {
