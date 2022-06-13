@@ -131,17 +131,6 @@ public class SystemManager {
 	public static void createDietPlan() {}
 
 	public static void editDietPlan() {}
-
-	
-	//-------------------FOOD MENU-----------------------------
-	public static void displayMenuOfTheDay() {}
-
-	public static void displayFoodMenu(FoodMenu menu) {}
-
-	public static void createFoodMenu() {}
-
-	public static void editFoodMenu() {}
-
 	
 	//------------------HOBBIES---------------------------------
 	public static void displayHobbies() {
