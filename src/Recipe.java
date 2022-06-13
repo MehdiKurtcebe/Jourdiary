@@ -1,5 +1,4 @@
-public class Recipe{
-
+public class Recipe implements Comparable<Recipe>{
     private String nameOfRecipe;
     private String contentOfRecipe;
 
@@ -27,6 +26,11 @@ public class Recipe{
 
     public String getContentOfRecipe(){
         return contentOfRecipe;
+    }
+
+    @Override
+    public int compareTo(Recipe other) {
+        return nameOfRecipe.compareTo(other.getNameOfRecipe());
     }
     
 }

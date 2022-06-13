@@ -23,4 +23,11 @@ public class Food {
 	public Integer getCalOfFood(){
 		return cal;
 	}
+	
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append(name + "-->" + cal + "cal");
+		return str.toString();
+	}
 }

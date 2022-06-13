@@ -173,7 +173,7 @@ public class UI {
 	private static void diet_plan(){
 		while(true){
 			diet_plan_menu();
-			int input = GetChoiceFromUser.getSubChoice(3, "YOUR CHOICE: ");
+			int input = GetChoiceFromUser.getSubChoice(4, "YOUR CHOICE: ");
 			switch (input) {
 				case 0:
 					return;
@@ -181,10 +181,13 @@ public class UI {
 					SystemManager.displayDietPlans();
 					break;
 				case 2:
-					SystemManager.createDietPlan();
+					SystemManager.addFoodToDietPlan();
 					break;
 				case 3:
-					SystemManager.editDietPlan();
+					SystemManager.removeFoodFromDietPlan();
+					break;
+				case 4:
+					SystemManager.filterFoodsByCalories();
 					break;
 			}
 		}
@@ -301,6 +304,7 @@ public class UI {
 		System.out.println("1 - Display All Diet Plans");
 		System.out.println("2 - Create Diet Plan");
 		System.out.println("3 - Edit Diet Plan");
+		System.out.println("4 - Filter Foods in Diet Plan by Calorie");
 	}
 
 	private static void exercise_plan_menu(){
