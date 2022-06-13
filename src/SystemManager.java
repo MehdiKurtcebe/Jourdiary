@@ -132,15 +132,46 @@ public class SystemManager {
 
 	
 	//-------------------DIET PLANS----------------------------
-	public static void displayDietPlans() {}
+	public static void displayDietPlans() {
+		Iterator it = loggedUser.getNotebook().getDietPlans().iterator();
+		while(it.hasNext()){
+			System.out.println(it.next());
+		}
+	}
 
-	public static void displayDietPlan(DietPlan plan) {}
+	public static void displayDietPlans(NavigableSet<Food> set) {
+		Iterator it = set.iterator();
+		while(it.hasNext()){
+			System.out.println(it.next());
+		}
+	}
 
-	public static void createDietPlan() {}
+	public static void addFoodToDietPlan() {
+		String foodName = GetChoiceFromUser.getStringFromUser("Enter name of food :");
+		Integer cal = GetChoiceFromUser.getNumber("Enter cal of food : ");
+		Food food = new Food(foodName, cal);
+		loggedUser.getNotebook().getDietPlans().add(food);
+	}
 
-	public static void editDietPlan() {}
+	public static void removeFoodFromDietPlan(){
+		String foodName = GetChoiceFromUser.getStringFromUser("Enter name of food : ");
+		for(Food food : loggedUser.getNotebook().getDietPlans()){
+			if(food.getNameOfFood().compareTo(foodName)==0){
+				loggedUser.getNotebook().getDietPlans().remove(food);
+				break;
+			}
+		}
+	}
 
-	
+	public static void filterFoodsByCalories(){
+		int cal = GetChoiceFromUser.getNumber("Enter cal value to filter diet plan : ");
+		Food food1 = new Food("a", 0);
+		Food food2 = new Food("z", cal);
+		
+		NavigableSet<Food> newSet = (NavigableSet<Food>) loggedUser.getNotebook().getDietPlans().subSet(food1, food2);
+		displayDietPlans(newSet);
+	}
+
 	//------------------HOBBIES---------------------------------
 	public static void displayHobbies() {
 		for(int i=0;i<loggedUser.getHobbies().size();i++)
