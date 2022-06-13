@@ -42,7 +42,7 @@ public class UI {
 					exercise_plan();
 					break;
 				case 7:
-					food_menu();
+					//food_menu();
 					break;
 				case 8:
 					hobbies();
@@ -84,7 +84,7 @@ public class UI {
 			int input = GetChoiceFromUser.getSubChoice(3, "");
 			switch (input) {
 				case 1:
-					displayAllDailySections();
+					SystemManager.displayAllDailySections();
 					break;
 				case 2:
 					SystemManager.addDailySection();
@@ -99,12 +99,14 @@ public class UI {
 	private static void to_do(){
 		to_do_menu();
 		while(true){
-			int input = GetChoiceFromUser.getSubChoice(4, "");
+			int input = GetChoiceFromUser.getSubChoice(6, "");
 			switch (input) {
 				case 1 -> SystemManager.displayCurrentToDos();
 				case 2 -> SystemManager.displayCompletedToDos();
 				case 3 -> SystemManager.createToDoList();
-				case 4 -> SystemManager.markTaskAsCompleted();
+				case 4 -> SystemManager.editToDoList();
+				case 5 -> SystemManager.markToDoAsCompleted();
+				case 6 -> SystemManager.markTaskAsCompleted();
 			}
 		}
 	}
@@ -112,13 +114,12 @@ public class UI {
 	private static void task(){
 		task_menu();
 		while(true){
-			int input = GetChoiceFromUser.getSubChoice(5, "");
+			int input = GetChoiceFromUser.getSubChoice(4, "");
 			switch (input) {
 				case 1 -> SystemManager.displayTasksOfTheDays();
 				case 2 -> SystemManager.addTask();
 				case 3 -> SystemManager.editTask();
 				case 4 -> SystemManager.markTaskAsCompleted();
-				case 5 -> SystemManager.markTaskAsNotCompleted();
 			}
 		}
 	}
@@ -143,18 +144,6 @@ public class UI {
 				case 1 -> SystemManager.displayExercisePlans();
 				case 2 -> SystemManager.displayExerciseOfTheDay();
 				case 3 -> SystemManager.addExercisePlan();
-			}
-		}
-	}
-
-	private static void food_menu(){
-		food_menu_menu();
-		while(true){
-			int input = GetChoiceFromUser.getSubChoice(3, "");
-			switch (input) {
-				case 1 -> SystemManager.displayMenuOfTheDay();
-				case 2 -> SystemManager.createFoodMenu();
-				case 3 -> SystemManager.editFoodMenu();
 			}
 		}
 	}
@@ -197,7 +186,6 @@ public class UI {
 		System.out.println("2 - Add Task");
 		System.out.println("3 - Edit Task");
 		System.out.println("4 - Mark Task As Completed");
-		System.out.println("5 - Mark Task as Not Completed");
 	}
 
 	private static void hobbies_menu(){
@@ -217,6 +205,8 @@ public class UI {
 		System.out.println("2 - Display Completed To-Dos");
 		System.out.println("3 - Create To-Do List");
 		System.out.println("4 - Edit To-Do List");
+		System.out.println("5 - Mark a To-Do List as Completed");
+		System.out.println("6 - Mark a Task as Completed");
 	}
 
 	private static void diet_plan_menu(){
@@ -231,9 +221,4 @@ public class UI {
 		System.out.println("3 - Add Exercise Plan");
 	}
 
-	private static void food_menu_menu(){
-		System.out.println("1 - Display Menu of the Day");
-		System.out.println("2 - Create Food Menu");
-		System.out.println("3 - Edit Food Menu");
-	}
 }
