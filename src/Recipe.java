@@ -29,9 +29,8 @@ public class Recipe implements Comparable<Recipe>{
     }
 
     @Override
-    public int compareTo(Recipe o) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int compareTo(Recipe other) {
+        return nameOfRecipe.compareTo(other.getNameOfRecipe());
     }
     
 }
