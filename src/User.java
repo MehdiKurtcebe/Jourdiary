@@ -8,9 +8,7 @@ public class User {
     
     private final String id;
 
-    private ArrayList<String> activeHobbies;
-
-    private ArrayList<String> passiveHobbies;
+    private ArrayList<String> Hobbies;
 
     private Notebook notebook;
 
@@ -67,22 +65,14 @@ public class User {
         return id;
     }
 
-    public ArrayList<String> getActiveHobbies() {
-        return activeHobbies;
+    public ArrayList<String> getHobbies() {
+        return Hobbies;
     }
 
-    public void setActiveHobbies(ArrayList<String> activeHobbies) {
-        this.activeHobbies = activeHobbies;
+    public void setHobbies(ArrayList<String> Hobbies) {
+        this.Hobbies = eHobbies;
     }
-
-    public ArrayList<String> getPassiveHobbies() {
-        return passiveHobbies;
-    }
-
-    public void setPassiveHobbies(ArrayList<String> passiveHobbies) {
-        this.passiveHobbies = passiveHobbies;
-    }
-
+    
     public Notebook getNotebook() {
         return notebook;
     }
