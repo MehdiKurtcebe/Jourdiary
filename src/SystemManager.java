@@ -133,14 +133,14 @@ public class SystemManager {
 	
 	//-------------------DIET PLANS----------------------------
 	public static void displayDietPlans() {
-		Iterator it = loggedUser.getNotebook().getDietPlans().iterator();
+		Iterator<Food> it = loggedUser.getNotebook().getDietPlans().iterator();
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
 	}
 
 	public static void displayDietPlans(NavigableSet<Food> set) {
-		Iterator it = set.iterator();
+		Iterator<Food> it = set.iterator();
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
