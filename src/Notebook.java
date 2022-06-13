@@ -1,23 +1,23 @@
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Notebook {
-    private final HashMap<Date, DailySection> dailySections;
-    private final Queue<ToDo> currentToDos;
-    private final Queue<ToDo> completedToDos;
 
-    private BST<ExerciseStat> exerciseStats;
-    private CircularArrayList<DietPlan> dietPlans;
+    private Date date;
+    private final HashMap<Date, DailySection> dailySections;
+    private final HashSet<ToDo> currentToDos;
+    private final HashSet<ToDo> completedToDos;
+    // private Skiplist exerciseStats;
+    //private BST<ExerciseStat> exerciseStats;
+    private NavigableMap<String,Integer> dietPlans;
+    // private Graph exercisePlans;
     private CircularArrayList<ExercisePlan> exercisePlans;
 
     public Notebook() {
         dailySections = new HashMap<>();
-        currentToDos = new LinkedList<>();
-        completedToDos = new LinkedList<>();
-        dietPlans = new CircularArrayList<>();
-        exercisePlans = new CircularArrayList<>();
+        currentToDos = new HashSet<>();
+        completedToDos = new HashSet<>();
+        dietPlans = new TreeMap<>();
+        // exercisePlans = new Graph;
     }
 
     public HashMap<Date, DailySection> getDailySections() {
@@ -28,6 +28,16 @@ public class Notebook {
         if (dailySections.containsKey(date)) return false;
         dailySections.put(date, new DailySection(date, new FoodMenu(null), null));
         return true;
+    }
+
+    public ToDo getToDoList(String name){
+        Iterator<ToDo> it = currentToDos.iterator();
+        while(it.hasNext()){
+            ToDo temp = it.next();
+            if(temp.getNameOfList().compareTo(temp.getNameOfList())==0)
+                return temp;
+        }
+        return null;
     }
 
     public Queue<ToDo> getCurrentToDos() {

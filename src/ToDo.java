@@ -6,7 +6,15 @@ public class ToDo {
 
 	private Date deadline;
 
+	private String nameOfList;
+
 	public ToDo(Date deadline) {
+		this.deadline = deadline;
+		this.tasks = new PriorityQueue<>();
+	}
+
+	public ToDo(Date deadline, String name) {
+		nameOfList = name;
 		this.deadline = deadline;
 		this.tasks = new PriorityQueue<>();
 	}
@@ -30,5 +38,17 @@ public class ToDo {
 
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
+	}
+
+	public void addTask(Task task){
+		tasks.add(task);
+	}
+
+	public String getNameOfList(){
+		return nameOfList;
+	}
+
+	public void setNameOfList(String name){
+		nameOfList = name;
 	}
 }
