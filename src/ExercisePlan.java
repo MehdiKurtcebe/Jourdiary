@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Iterator;
+import java.util.Random;
 
 public class ExercisePlan {
 
@@ -48,16 +49,16 @@ public class ExercisePlan {
 		this.dailyExercises = dailyExercises;
 	}
 
-	public void getDaily()
-	{
+	public void getDaily() {
 		Random rand = new Random();
 		int r = rand.nextInt(10);
-		Iterator<Exercise> itr = dailyExercises.edgeIterator(E[r]);
-		Iterator<Exercise> itr2 = dailyExercises.edgeIterator(E[r]);
-		while(itr.hasNext() && itr2.hasNext())
-		{
-			System.out.println(itr.next().toString());
-			burnedCals += itr2.next().getCal();
+		Iterator<Edge<Exercise>> itr = dailyExercises.edgeIterator(E[r]);
+		System.out.println(E[r].toString());
+		burnedCals += E[r].getCal();
+		while (itr.hasNext()) {
+			Edge<Exercise> e = itr.next();
+			System.out.println(e.toString());
+			burnedCals += e.getDest().getCal();
 		}
 	}
 

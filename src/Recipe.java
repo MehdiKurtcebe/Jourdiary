@@ -1,36 +1,56 @@
-public class Recipe implements Comparable<Recipe>{
+import java.util.Objects;
+
+public class Recipe implements Comparable<Recipe> {
     private String nameOfRecipe;
     private String contentOfRecipe;
 
-    Recipe(String str1){
-        nameOfRecipe = str1;
-        contentOfRecipe = new String("unknown");
-    }
-    
-    Recipe(String str1, String str2){
-        nameOfRecipe = str1;
-        contentOfRecipe = str2;
+    public Recipe(String name) {
+        nameOfRecipe = name;
+        contentOfRecipe = new String("unknown_CONTENT");
     }
 
-    public void setNameOfRecipe(String str){
-        nameOfRecipe = str;
+    public Recipe(String name, String content) {
+        nameOfRecipe = name;
+        contentOfRecipe = content;
     }
 
-    public void setContentOfRecipe(String str){
-        contentOfRecipe = str;
+    public void setNameOfRecipe(String name) {
+        nameOfRecipe = name;
     }
 
-    public String getNameOfRecipe(){
+    public void setContentOfRecipe(String content) {
+        contentOfRecipe = content;
+    }
+
+    public String getNameOfRecipe() {
         return nameOfRecipe;
     }
 
-    public String getContentOfRecipe(){
+    public String getContentOfRecipe() {
         return contentOfRecipe;
     }
 
     @Override
-    public int compareTo(Recipe other) {
-        return nameOfRecipe.compareTo(other.getNameOfRecipe());
+    public String toString() {
+        return "\nRecipe: " + nameOfRecipe +
+                "\nContent: " + contentOfRecipe + "\n";
     }
-    
+
+    @Override
+    public int compareTo(Recipe other) {
+        return nameOfRecipe.compareTo(other.nameOfRecipe);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return compareTo(recipe) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameOfRecipe);
+    }
 }

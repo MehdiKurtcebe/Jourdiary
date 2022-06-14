@@ -1,10 +1,8 @@
-public class Exercise 
-{
+public class Exercise implements Comparable<Exercise> {
     public String name;
     public int cal;
 
-    public Exercise(String n, int cal)
-    {
+    public Exercise(String n, int cal) {
         this.name = n;
         this.cal = cal;
     }
@@ -14,13 +12,16 @@ public class Exercise
         return name;
     }
 
-    public int getCal()
-    {
+    public int getCal() {
         return cal;
     }
 
-    public String toString()
-    {
-        return name + " : "+ cal + "\n";
+    public String toString() {
+        return "\n" + name + ": " + cal + "\n";
+    }
+
+    @Override
+    public int compareTo(Exercise o) {
+        return cal - o.cal;
     }
 }

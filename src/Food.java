@@ -1,5 +1,5 @@
 
-public class Food {
+public class Food implements Comparable<Food> {
 	private String name;
 	private Integer cal;
 
@@ -16,18 +16,21 @@ public class Food {
 		this.name = name;
 	}
 
-	public void setCalOfFood(Integer cal){
+	public void setCalOfFood(Integer cal) {
 		this.cal = cal;
 	}
 
-	public Integer getCalOfFood(){
+	public Integer getCalOfFood() {
 		return cal;
 	}
-	
+
 	@Override
-	public String toString(){
-		StringBuilder str = new StringBuilder();
-		str.append(name + "-->" + cal + "cal");
-		return str.toString();
+	public String toString() {
+		return "\n" + name + " --> " + cal + " cal\n";
+	}
+
+	@Override
+	public int compareTo(Food o) {
+		return cal - o.cal;
 	}
 }

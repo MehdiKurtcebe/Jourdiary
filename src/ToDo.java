@@ -1,18 +1,20 @@
+import java.util.Calendar;
 import java.util.PriorityQueue;
 
 public class ToDo {
 	private PriorityQueue<Task> tasks;
 
-	private Date deadline;
+	private Calendar deadline;
 
 	private String nameOfList;
 
-	public ToDo(Date deadline) {
+	public ToDo(Calendar deadline) {
 		this.deadline = deadline;
 		this.tasks = new PriorityQueue<>();
+		this.nameOfList = "unknown_NAME";
 	}
 
-	public ToDo(Date deadline, String name) {
+	public ToDo(Calendar deadline, String name) {
 		nameOfList = name;
 		this.deadline = deadline;
 		this.tasks = new PriorityQueue<>();
@@ -31,11 +33,11 @@ public class ToDo {
 		this.tasks = tasks;
 	}
 
-	public Date getDeadline() {
+	public Calendar getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public void setDeadline(Calendar deadline) {
 		this.deadline = deadline;
 	}
 
@@ -43,11 +45,27 @@ public class ToDo {
 		tasks.add(task);
 	}
 
-	public String getNameOfList(){
+	public String getNameOfList() {
 		return nameOfList;
 	}
 
-	public void setNameOfList(String name){
+	public void setNameOfList(String name) {
 		nameOfList = name;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("\nToDo: ");
+		s.append(nameOfList);
+		s.append("\nDeadline: ");
+		s.append(deadline);
+		s.append("\nTasks: \n");
+		for (Task t : tasks) {
+			s.append("    - ");
+			s.append(t);
+			s.append("\n");
+		}
+		return s.toString();
 	}
 }

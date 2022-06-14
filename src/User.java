@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class User {
     
@@ -8,7 +9,7 @@ public class User {
     
     private final String id;
 
-    private ArrayList<String> Hobbies;
+    private ArrayList<String> hobbies;
 
     private Notebook notebook;
 
@@ -20,7 +21,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.id = id;
-        this.Hobbies = new ArrayList<>();
+        this.hobbies = new ArrayList<>();
         this.notebook = new Notebook();
     }
 
@@ -65,18 +66,39 @@ public class User {
     }
 
     public ArrayList<String> getHobbies() {
-        return Hobbies;
+        return hobbies;
     }
 
     public void setHobbies(ArrayList<String> Hobbies) {
-        this.Hobbies = eHobbies;
+        this.hobbies = Hobbies;
     }
-    
+
     public Notebook getNotebook() {
         return notebook;
     }
 
     public void setNotebook(Notebook notebook) {
         this.notebook = notebook;
+    }
+
+    @Override
+    public String toString() {
+        return "\nUSER: \n" +
+                "    Name: " + name +
+                "\n    Surname: " + surname +
+                "\n    ID: " + id + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

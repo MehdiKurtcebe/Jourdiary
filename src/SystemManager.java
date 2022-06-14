@@ -1,17 +1,12 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NavigableSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
-public class SystemManager {
+public abstract class SystemManager {
 	//------------------FIELDS------------------
 	private static HashMap<String, User> users;
 
 	private static User loggedUser;
 	private static User sharingUser;
-	
+
 	//-----------------PROFILE METHODS-----------------------
 	public static HashMap<String, User> getUsers() {
 		return users;
@@ -103,35 +98,36 @@ public class SystemManager {
 		}
 		else if(num==4){//recipe
 			//choose one recipe from AVLTree and print it
-		}
-		else if(num==5){//exercise plan
+		} else if (num == 5) {//exercise plan
 			//choose one exercise plan from Graph and print it
 		}
 		return false;
-		
+
 	}
 
-	
 
 	//--------------------DAILY SECTION----------------------------
-	
+
+	public static DailySection getDailySection(Calendar date) {
+		return loggedUser.getNotebook().getDailySection(date);
+	}
+
 	public static void displayAllDailySections() {
 	}
 
-	public static void displayDailySections(Date date) {
-	}
-
-	public static void addDailySection() {
+	public static void displayDailySection(Calendar date) {
+		DailySection ds = getDailySection(date);
+		System.out.println(ds != null ? ds : "No Result");
 	}
 
 	public static void editDailySection() {
 	}
-	
+
 	//-------------------------TO-DO--------------------------------
 	public static void displayCurrentToDos() {
 		System.out.printf("\n ------->> Current To-Dos <<--------");
 		Iterator<ToDo> it = loggedUser.getNotebook().getCurrentToDos().iterator();
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			displayToDo(it.next());
 		}
 	}
@@ -157,7 +153,7 @@ public class SystemManager {
 		int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
 		int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
 		int year = GetChoiceFromUser.getNumber("Please enter year : ");
-		Date date = new Date(day, month, year);
+		Calendar date = new GregorianCalendar(year, month, day);
 
 		return new ToDo(date,nameOfList);
 	}
@@ -171,7 +167,7 @@ public class SystemManager {
 			int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
 			int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
 			int year = GetChoiceFromUser.getNumber("Please enter year : ");
-			list.setDeadline(new Date(day,month,year));
+			list.setDeadline(new GregorianCalendar(year, month, day));
 		}
 		else if(choice == 2){
 			String content = GetChoiceFromUser.getStringFromUser("Enter new task : ");

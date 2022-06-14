@@ -1,4 +1,7 @@
-public class UI {
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public abstract class UI {
 	private static void start_screen() {
 		while (true) {
 			start_screen_menu();
@@ -7,11 +10,11 @@ public class UI {
 				case 0:
 					System.exit(0);
 				case 1:
-					while (!loginProcess());
+					while (!loginProcess()) ;
 					home_screen();
 					break;
 				case 2:
-					signup();
+					while (!signup()) ;
 					break;
 			}
 		}
@@ -70,21 +73,18 @@ public class UI {
 
 	private static boolean loginProcess() {
 		System.out.println("--------LOGIN--------");
-		User user = SystemManager.getUsers().get(GetChoiceFromUser.getStringFromUser("ENTER ID: "));
-		if(user != null) {
-			SystemManager.setLoggedUser(user);
+		String id = GetChoiceFromUser.getStringFromUser("ENTER ID: ");
+		if (SystemManager.login(id)) {
 			System.out.println("LOGIN SUCCESSFUL");
-			System.out.printf("Welcome %s\n", user.getName());
+			System.out.printf("Welcome %s\n", SystemManager.getLoggedUser().getName());
 			return true;
-		}
-		else {
+		} else {
 			System.out.println("LOGIN FAILED");
 			return false;
 		}
 	}
 
-
-	private static void signup() {
+	private static boolean signup() {
 		System.out.println("--------SIGN UP--------");
 		String ID = GetChoiceFromUser.getStringFromUser("ENTER ID: ");
 		System.out.println("Your ID: " + ID);
@@ -94,32 +94,70 @@ public class UI {
 		String Surname = GetChoiceFromUser.getStringFromUser("ENTER SURNAME: ");
 
 		User newUser = new User(ID, Name, Surname);
-		SystemManager.getUsers().put(ID, newUser);
-		System.out.println("SIGNED UP SUCCESSFULLY");
+		if (SystemManager.signup(newUser)) {
+			System.out.println("SIGNED UP SUCCESSFULLY");
+			return true;
+		} else {
+			System.out.println("SIGN UP FAILED");
+			return false;
+		}
 	}
 
 	private static void daily_section() {
 		while(true){
 			daily_section_menu();
-			int input = GetChoiceFromUser.getSubChoice(3, "YOUR CHOICE: ");
+			int input = GetChoiceFromUser.getSubChoice(2, "YOUR CHOICE: ");
 			switch (input) {
 				case 0:
 					return;
 				case 1:
-					SystemManager.displayAllDailySections();
+					past_daily_sections();
 					break;
 				case 2:
-					SystemManager.addDailySection();
-					break;
-				case 3:
+					edit_daily_section();
 					SystemManager.editDailySection();
 					break;
 			}
 		}
 	}
 
-	private static void to_do(){
-		while(true){
+	private static void edit_daily_section() {
+		System.out.println("ENTER DATE");
+		int day = GetChoiceFromUser.getSubChoice(31, "DAY: ");
+		int month = GetChoiceFromUser.getSubChoice(12, "MONTH: ");
+		int year = GetChoiceFromUser.getSubChoice(3000, "YEAR: ");
+		DailySection ds = SystemManager.getDailySection(new GregorianCalendar(year, month, day));
+		if (ds == null) System.out.println("DAILY SECTION CANNOT FOUND");
+		else {
+
+		}
+	}
+
+	private static void past_daily_sections() {
+		System.out.println("LAST 7 DAYS: ");
+		Calendar date = Calendar.getInstance();
+		for (int i = 0; i < 7; i++) {
+			date.add(GregorianCalendar.DAY_OF_MONTH, -1);
+			SystemManager.displayDailySection(date);
+		}
+		while (true) {
+			past_daily_sections_menu();
+			int input = GetChoiceFromUser.getSubChoice(1, "YOUR CHOICE: ");
+			switch (input) {
+				case 0:
+					return;
+				case 1:
+					int day = GetChoiceFromUser.getSubChoice(31, "DAY: ");
+					int month = GetChoiceFromUser.getSubChoice(12, "MONTH: ");
+					int year = GetChoiceFromUser.getSubChoice(3000, "YEAR: ");
+					SystemManager.displayDailySection(new GregorianCalendar(year, month, day));
+					break;
+			}
+		}
+	}
+
+	private static void to_do() {
+		while (true) {
 			to_do_menu();
 			int input = GetChoiceFromUser.getSubChoice(6, "YOUR CHOICE: ");
 			switch (input) {
@@ -282,14 +320,18 @@ public class UI {
 		System.out.println("3 - Edit Hobbies");
 	}
 
-	private static void daily_section_menu(){
+	private static void daily_section_menu() {
 		System.out.println("0 - Back");
-		System.out.println("1 - Display All Daily Sections");
-		System.out.println("2 - Add Daily Section");
-		System.out.println("3 - Edit Daily Section");
+		System.out.println("1 - Display Past Daily Sections");
+		System.out.println("2 - Edit Daily Section");
 	}
 
-	private static void to_do_menu(){
+	private static void past_daily_sections_menu() {
+		System.out.println("0 - Back");
+		System.out.println("1 - View Other Daily Sections");
+	}
+
+	private static void to_do_menu() {
 		System.out.println("0 - Back");
 		System.out.println("1 - Display Current To-Dos");
 		System.out.println("2 - Display Completed To-Dos");
