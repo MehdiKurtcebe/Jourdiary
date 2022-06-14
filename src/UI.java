@@ -1,5 +1,4 @@
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public abstract class UI {
 	public static void start_screen() {
@@ -123,7 +122,7 @@ public abstract class UI {
 		int day = GetChoiceFromUser.getSubChoice(31, "DAY: ");
 		int month = GetChoiceFromUser.getSubChoice(12, "MONTH: ");
 		int year = GetChoiceFromUser.getSubChoice(3000, "YEAR: ");
-		DailySection ds = SystemManager.getDailySection(new GregorianCalendar(year, month, day));
+		DailySection ds = SystemManager.getDailySection(LocalDate.of(year, month, day));
 		if (ds == null) System.out.println("DAILY SECTION CANNOT FOUND");
 		else {
 
@@ -132,10 +131,8 @@ public abstract class UI {
 
 	private static void past_daily_sections() {
 		System.out.println("LAST 7 DAYS: ");
-		Calendar date = Calendar.getInstance();
-		for (int i = 0; i < 7; i++) {
-			date.add(GregorianCalendar.DAY_OF_MONTH, -1);
-			SystemManager.displayDailySection(date);
+		for (int i = 1; i <= 7; i++) {
+			SystemManager.displayDailySection(LocalDate.now().minusDays(i));
 		}
 		while (true) {
 			past_daily_sections_menu();
@@ -147,7 +144,7 @@ public abstract class UI {
 					int day = GetChoiceFromUser.getSubChoice(31, "DAY: ");
 					int month = GetChoiceFromUser.getSubChoice(12, "MONTH: ");
 					int year = GetChoiceFromUser.getSubChoice(3000, "YEAR: ");
-					SystemManager.displayDailySection(new GregorianCalendar(year, month, day));
+					SystemManager.displayDailySection(LocalDate.of(year, month, day));
 					break;
 			}
 		}

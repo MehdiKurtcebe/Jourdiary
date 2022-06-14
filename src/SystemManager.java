@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public abstract class SystemManager {
@@ -108,14 +109,14 @@ public abstract class SystemManager {
 
 	//--------------------DAILY SECTION----------------------------
 
-	public static DailySection getDailySection(Calendar date) {
+	public static DailySection getDailySection(LocalDate date) {
 		return loggedUser.getNotebook().getDailySection(date);
 	}
 
 	public static void displayAllDailySections() {
 	}
 
-	public static void displayDailySection(Calendar date) {
+	public static void displayDailySection(LocalDate date) {
 		DailySection ds = getDailySection(date);
 		System.out.println(ds != null ? ds : "No Result");
 	}
@@ -153,7 +154,7 @@ public abstract class SystemManager {
 		int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
 		int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
 		int year = GetChoiceFromUser.getNumber("Please enter year : ");
-		Calendar date = new GregorianCalendar(year, month, day);
+		LocalDate date = LocalDate.of(year, month, day);
 
 		ToDo newTodo = new ToDo(date, nameOfList);
 		loggedUser.getNotebook().addCurrentToDo(newTodo);
@@ -168,7 +169,7 @@ public abstract class SystemManager {
 			int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
 			int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
 			int year = GetChoiceFromUser.getNumber("Please enter year : ");
-			list.setDeadline(new GregorianCalendar(year, month, day));
+			list.setDeadline(LocalDate.of(year, month, day));
 		}
 		else if(choice == 2){
 			String content = GetChoiceFromUser.getStringFromUser("Enter new task : ");

@@ -1,8 +1,9 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class DailySection {
-	private final Calendar date;
+	private final LocalDate date;
 
 	private ArrayList<String> dailyEntries;
 
@@ -10,14 +11,14 @@ public class DailySection {
 
 	private final String exerciseOfTheDay;
 
-	public DailySection(Calendar date, String menuOfTheDay, String exerciseOfTheDay) {
+	public DailySection(LocalDate date, String menuOfTheDay, String exerciseOfTheDay) {
 		this.date = date;
 		this.menuOfTheDay = menuOfTheDay;
 		this.exerciseOfTheDay = exerciseOfTheDay;
 		dailyEntries = new ArrayList<>();
 	}
 
-	public Calendar getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
@@ -41,10 +42,8 @@ public class DailySection {
 	public String toString() {
 		StringBuilder s = new StringBuilder("\n");
 		s.append("Date: ");
-		s.append("%s.%s.%s\n".formatted(date.getDisplayName(Calendar.DAY_OF_MONTH, Calendar.LONG, java.util.Locale.getDefault()),
-										date.getDisplayName(Calendar.MONTH, Calendar.SHORT, java.util.Locale.getDefault()),
-										date.getDisplayName(Calendar.YEAR, Calendar.LONG, java.util.Locale.getDefault())));
-		s.append("Menu of the day: %s\n".formatted(menuOfTheDay));
+		s.append(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		s.append("\nMenu of the day: %s\n".formatted(menuOfTheDay));
 		s.append("Exercise of the day: %s\n".formatted(exerciseOfTheDay));
 		s.append("Notes: \n");
 		for (String entry : dailyEntries) {

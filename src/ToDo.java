@@ -1,20 +1,20 @@
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.PriorityQueue;
 
 public class ToDo {
 	private PriorityQueue<Task> tasks;
 
-	private Calendar deadline;
+	private LocalDate deadline;
 
 	private String nameOfList;
 
-	public ToDo(Calendar deadline) {
+	public ToDo(LocalDate deadline) {
 		this.deadline = deadline;
 		this.tasks = new PriorityQueue<>();
 		this.nameOfList = "unknown_NAME";
 	}
 
-	public ToDo(Calendar deadline, String name) {
+	public ToDo(LocalDate deadline, String name) {
 		nameOfList = name;
 		this.deadline = deadline;
 		this.tasks = new PriorityQueue<>();
@@ -33,11 +33,11 @@ public class ToDo {
 		this.tasks = tasks;
 	}
 
-	public Calendar getDeadline() {
+	public LocalDate getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(Calendar deadline) {
+	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
 

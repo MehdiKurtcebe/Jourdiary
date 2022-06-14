@@ -1,8 +1,9 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class Notebook {
-        private final HashMap<Calendar, DailySection> dailySections;
-    private final HashSet<ToDo> currentToDos;
+        private final HashMap<LocalDate, DailySection> dailySections;
+        private final HashSet<ToDo> currentToDos;
         private final HashSet<ToDo> completedToDos;
 
         // private Skiplist exerciseStats;
@@ -18,19 +19,18 @@ public class Notebook {
         dietPlans = new TreeSet<>();
 
         //these part could be changed
-        String[] arr = new String[10];
-        exercisePlans = new AdjacencyListMatrix<>(3, true, arr);
+        exercisePlans = new AdjacencyListMatrix<>(3, true, new String[3]);
     }
 
-    public HashMap<Calendar, DailySection> getDailySections() {
+    public HashMap<LocalDate, DailySection> getDailySections() {
         return dailySections;
     }
 
-    public DailySection getDailySection(Calendar date) {
-        return dailySections.get(date);
+    public DailySection getDailySection(LocalDate date) {
+        return dailySections.get(date.);
     }
 
-    public boolean addDailySection(Calendar date) {
+    public boolean addDailySection(LocalDate date) {
         if (dailySections.containsKey(date)) return false;
         dailySections.put(date, new DailySection(date, "unknown", null));
         return true;
