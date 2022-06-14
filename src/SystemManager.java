@@ -148,14 +148,15 @@ public abstract class SystemManager {
 		}	
 	}
 
-	public static ToDo createToDoList(){
+	public static void createToDoList(){
 		String nameOfList = GetChoiceFromUser.getStringFromUser("Enter name of list : ");
 		int day = GetChoiceFromUser.getSubChoice(31, "Please enter day : ");
 		int month = GetChoiceFromUser.getSubChoice(12, "Please enter month : ");
 		int year = GetChoiceFromUser.getNumber("Please enter year : ");
 		Calendar date = new GregorianCalendar(year, month, day);
 
-		return new ToDo(date,nameOfList);
+		ToDo newTodo = new ToDo(date, nameOfList);
+		loggedUser.getNotebook().addCurrentToDo(newTodo);
 	}
 
 	public static void editToDoList() {
