@@ -36,4 +36,20 @@ public class DailySection {
 	public void setDailyEntries(ArrayList<String> dailyEntries) {
 		this.dailyEntries = dailyEntries;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder("\n");
+		s.append("Date: ");
+		s.append("%s.%s.%s\n".formatted(date.getDisplayName(Calendar.DAY_OF_MONTH, Calendar.LONG, java.util.Locale.getDefault()),
+										date.getDisplayName(Calendar.MONTH, Calendar.SHORT, java.util.Locale.getDefault()),
+										date.getDisplayName(Calendar.YEAR, Calendar.LONG, java.util.Locale.getDefault())));
+		s.append("Menu of the day: %s\n".formatted(menuOfTheDay));
+		s.append("Exercise of the day: %s\n".formatted(exerciseOfTheDay));
+		s.append("Notes: \n");
+		for (String entry : dailyEntries) {
+			s.append("- %s\n".formatted(entry));
+		}
+		return s.toString();
+	}
 }

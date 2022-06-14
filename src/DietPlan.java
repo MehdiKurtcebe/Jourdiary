@@ -3,18 +3,18 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 public class DietPlan implements Comparable<DietPlan>{
-	private NavigableSet<Food> Menu = new TreeSet<Food>();
+	private NavigableSet<Food> Menu;
 
 	public DietPlan() {
 		Menu = new TreeSet<Food>();
 	}
 
-	public void setDailyMenus(NavigableSet<Food> dailyMenus) {
-		this.Menu = dailyMenus;
+	public NavigableSet<Food> getMenu(){
+		return Menu;
 	}
 
-	public void print_DietPlan(){
-
+	public void setDailyMenus(NavigableSet<Food> dailyMenus) {
+		this.Menu = dailyMenus;
 	}
 
 	public void add(Food food){
@@ -25,14 +25,29 @@ public class DietPlan implements Comparable<DietPlan>{
 		return Menu.iterator();
 	}
 
-	public NavigableSet<Food> getMenu(){
-		return Menu;
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder("\nDietPlan:\n");
+		for (Food f : Menu) {
+			s.append("    ");
+			s.append(f.toString());
+			s.append("\n");
+		}
+		return s.toString();
 	}
 
 	@Override
 	public int compareTo(DietPlan o) {
-		System.out.printf("\n DIET PLAN CLASS COMPARETO");
-		return 0;
+		int totalCals = 0;
+		for (Food f : Menu) {
+			totalCals += f.getCalOfFood();
+		}
+
+		int oTotalCals = 0;
+		for (Food f : o.Menu) {
+			oTotalCals += f.getCalOfFood();
+		}
+		return totalCals - oTotalCals;
 	}
 	
 }
