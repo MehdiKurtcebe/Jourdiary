@@ -1,4 +1,4 @@
-public class Date {
+public class Date implements Comparable<Date> {
 	private int day;
 	private int month;
 	private int year;
@@ -35,6 +35,27 @@ public class Date {
 		this.year = year;
 	}
 
-
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append(day);
+		str.append("/");
+		str.append(month);
+		str.append("/");
+		str.append(year);
+		return str.toString();
+	}
+	
+	@Override
+	public int compareTo(Date date) {
+		if(date.getYear() == this.getYear() && date.getMonth() == this.getMonth() && date.getDay() == this.getDay()) return 0;
+		else if(date.getYear() > this.getYear()) return 1;
+		else if(date.getYear() < this.getYear()) return -1;
+		else if(date.getMonth() > this.getMonth()) return 1;
+		else if(date.getMonth() < this.getMonth()) return -1;
+		else if(date.getDay() > this.getDay()) return 1;
+		else if(date.getDay() < this.getDay()) return -1;
+		else return 0;
+	}
 
 }

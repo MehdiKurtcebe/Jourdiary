@@ -28,7 +28,7 @@ public class Task implements Comparable<Task> {
 
 	@Override
 	public String toString() {
-		return (completed ? "\n[x]" : "\n[ ] ") + content + "\n";
+		return (completed ? "[x] " : "[ ] ") + content + "";
 	}
 
 	@Override

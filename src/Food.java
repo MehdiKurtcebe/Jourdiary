@@ -26,7 +26,12 @@ public class Food implements Comparable<Food> {
 
 	@Override
 	public String toString() {
-		return "\n" + name + " --> " + cal + " cal\n";
+		StringBuilder str = new StringBuilder();
+		str.append(name);
+		str.append("--->");
+		str.append(cal);
+		str.append("cal");
+		return name + " ---> " + cal + " cal";
 	}
 
 	@Override

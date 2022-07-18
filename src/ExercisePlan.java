@@ -1,5 +1,4 @@
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 public class ExercisePlan {
 
@@ -7,6 +6,11 @@ public class ExercisePlan {
 	private Exercise E[];
 	private int burnedCals;
 
+
+	/**
+     * Constructor that initiliazes the exercise plan with deafult recommended routines.
+     * 
+     */
 	public ExercisePlan() {
 		burnedCals = 0;
 		Exercise Aerobics = new Exercise("Aerobics", 144);
@@ -30,15 +34,17 @@ public class ExercisePlan {
 		E[7] = Walking;
 		E[8] = Running;
 		E[9] = ropeJumping;
-		dailyExercises = new AdjacencyListMatrix<>(20, true, E);
+		dailyExercises = new AdjacencyListMatrix<>(10, true, E);
 		dailyExercises.insert(new Edge<Exercise>(Aerobics, Walking));
 		dailyExercises.insert(new Edge<Exercise>(Walking, Stretching));
-		dailyExercises.insert(new Edge<Exercise>(Walking, ellipticalTrainer));
+		dailyExercises.insert(new Edge<Exercise>(Stretching, ellipticalTrainer));
 		dailyExercises.insert(new Edge<Exercise>(ellipticalTrainer, ropeJumping));
 		dailyExercises.insert(new Edge<Exercise>(Calisthenics, Bicycling));
 		dailyExercises.insert(new Edge<Exercise>(Bicycling, Aerobics));
 		dailyExercises.insert(new Edge<Exercise>(Running, stairStepMachine));
 		dailyExercises.insert(new Edge<Exercise>(stairStepMachine, weightLifting));
+		dailyExercises.insert(new Edge<Exercise>(weightLifting, ropeJumping));
+		dailyExercises.insert(new Edge<Exercise>(ropeJumping, Calisthenics));
 	}
 
 	public AdjacencyListMatrix<Exercise> getDailyExercises() {
@@ -49,22 +55,42 @@ public class ExercisePlan {
 		this.dailyExercises = dailyExercises;
 	}
 
-	public void getDaily() {
+	public void showDaily()
+	{
 		Random rand = new Random();
 		int r = rand.nextInt(10);
-		Iterator<Edge<Exercise>> itr = dailyExercises.edgeIterator(E[r]);
-		System.out.println(E[r].toString());
-		burnedCals += E[r].getCal();
-		while (itr.hasNext()) {
-			Edge<Exercise> e = itr.next();
-			System.out.println(e.toString());
-			burnedCals += e.getDest().getCal();
+		Iterator<Edge<Exercise>> itr = dailyExercises.edgeIterator(dailyExercises.vertex(r));
+		Iterator<Edge<Exercise>> itr2 = dailyExercises.edgeIterator(dailyExercises.vertex(r));
+		while(itr.hasNext() && itr2.hasNext())
+		{
+			System.out.println(itr.next().toString());
+			burnedCals += itr2.next().getDest().getCal();
 		}
 	}
 
 	public int ExerciseStatistics()
 	{
 		return burnedCals;
+	}
+
+	public void addExercise()
+	{
+		String n = GetChoiceFromUser.getStringFromUser(">>Please enter the exercise name: ");
+		int c = GetChoiceFromUser.getNumber(">>Please enter the calories this routine burns: ");
+
+		Exercise E = new Exercise(n, c);		
+		dailyExercises.insertVertex(E);
+		Random rand = new Random();
+		int r = rand.nextInt(10);
+		dailyExercises.insert(new Edge<Exercise>(dailyExercises.vertex(r), E));
+	}
+
+
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append("\nAerobics : 144");
+		return str.toString();
 	}
 
 }

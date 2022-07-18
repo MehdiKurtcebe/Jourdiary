@@ -3,18 +3,18 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 public class DietPlan implements Comparable<DietPlan>{
-	private NavigableSet<Food> Menu;
+	private NavigableSet<Food> Menu = new TreeSet<Food>();
 
 	public DietPlan() {
 		Menu = new TreeSet<Food>();
 	}
 
-	public NavigableSet<Food> getMenu(){
-		return Menu;
-	}
-
 	public void setDailyMenus(NavigableSet<Food> dailyMenus) {
 		this.Menu = dailyMenus;
+	}
+
+	public void print_DietPlan(){
+
 	}
 
 	public void add(Food food){
@@ -25,29 +25,27 @@ public class DietPlan implements Comparable<DietPlan>{
 		return Menu.iterator();
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder s = new StringBuilder("\nDietPlan:\n");
-		for (Food f : Menu) {
-			s.append("    ");
-			s.append(f.toString());
-			s.append("\n");
-		}
-		return s.toString();
+	public NavigableSet<Food> getMenu(){
+		return Menu;
 	}
 
 	@Override
 	public int compareTo(DietPlan o) {
-		int totalCals = 0;
-		for (Food f : Menu) {
-			totalCals += f.getCalOfFood();
-		}
+		System.out.printf("\n DIET PLAN CLASS COMPARETO");
+		return 0;
+	}
 
-		int oTotalCals = 0;
-		for (Food f : o.Menu) {
-			oTotalCals += f.getCalOfFood();
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("\n==Diet Plan==\n ");
+		s.append("\nFoods : \n");
+		for (Food f : Menu) {
+			s.append("  - ");
+			s.append(f);
+			//s.append("\n");
 		}
-		return totalCals - oTotalCals;
+		return s.toString();
 	}
 	
 }

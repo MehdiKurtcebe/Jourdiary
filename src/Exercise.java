@@ -16,8 +16,9 @@ public class Exercise implements Comparable<Exercise> {
         return cal;
     }
 
+    @Override
     public String toString() {
-        return "\n" + name + ": " + cal + "\n";
+        return "->" + name + ": " + cal ;
     }
 
     @Override

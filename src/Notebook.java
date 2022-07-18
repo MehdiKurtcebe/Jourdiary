@@ -1,38 +1,39 @@
-import java.time.LocalDate;
 import java.util.*;
 
 public class Notebook {
-        private final HashMap<LocalDate, DailySection> dailySections;
+        private final SkipList<DailySection> dailySections;
         private final HashSet<ToDo> currentToDos;
         private final HashSet<ToDo> completedToDos;
 
-        // private Skiplist exerciseStats;
-        
-        private NavigableSet<Food> dietPlans;
-        private GraphADT<String> exercisePlans;
+        private DietPlan dietPlans;
+        private ExercisePlan exercisePlans;
         private AVLTree<Recipe> recipes;
 
     public Notebook() {
-        dailySections = new HashMap<>();
+        dailySections = new SkipList<>();
         currentToDos = new HashSet<>();
         completedToDos = new HashSet<>();
-        dietPlans = new TreeSet<>();
+        dietPlans = new DietPlan();
+        recipes = new AVLTree<Recipe>();
 
         //these part could be changed
-        exercisePlans = new AdjacencyListMatrix<>(3, true, new String[3]);
+        exercisePlans = new ExercisePlan();
     }
 
-    public HashMap<LocalDate, DailySection> getDailySections() {
+    public SkipList<DailySection> getDailySections() {
         return dailySections;
     }
 
-    public DailySection getDailySection(LocalDate date) {
-        return dailySections.get(date.);
+    public DailySection getDailySection(Date date) {
+        DailySection tempDS = new DailySection(date, "unknown", null);
+        return dailySections.find(tempDS);
     }
 
-    public boolean addDailySection(LocalDate date) {
-        if (dailySections.containsKey(date)) return false;
-        dailySections.put(date, new DailySection(date, "unknown", null));
+    public boolean addDailySection(Date date) {
+        DailySection tempDS = new DailySection(date, "unknown", null);
+        if (dailySections.contains(tempDS)) return false;
+        
+        dailySections.add(new DailySection(date, "unknown", null));
         return true;
     }
 
@@ -52,19 +53,19 @@ public class Notebook {
         this.completedToDos.add(completedToDo);
     }
 
-    public NavigableSet<Food> getDietPlans() {
+    public DietPlan getDietPlans() {
         return dietPlans;
     }
 
-    public void setDietPlans(NavigableSet<Food> dietPlans) {
+    public void setDietPlans(DietPlan dietPlans) {
         this.dietPlans = dietPlans;
     }
 
-    public GraphADT<String> getExercisePlans() {
+    public ExercisePlan getExercisePlans() {
         return exercisePlans;
     }
 
-    public void setExercisePlans(GraphADT<String> exercisePlans) {
+    public void setExercisePlans(ExercisePlan exercisePlans) {
         this.exercisePlans = exercisePlans;
     }
 
@@ -75,7 +76,7 @@ public class Notebook {
         Iterator<ToDo> it = currentToDos.iterator();
         while(it.hasNext()){
             ToDo temp = it.next();
-            if(temp.getNameOfList().compareTo(temp.getNameOfList())==0)
+            if(temp.getNameOfList().compareTo(name)==0)
                 return temp;
         }
         return null;
@@ -84,4 +85,5 @@ public class Notebook {
     public AVLTree<Recipe> getRecipes(){
         return recipes;
     }
+
 }
